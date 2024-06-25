@@ -1,29 +1,26 @@
 import json
-import os
 import subprocess
 
 sprite_data = {
-  "sprites": [
-    {
-      "file_path": "assets/forest-tile-128px.png",
-      "x": 200,
-      "y": 250,
-      "animations": [
-        # add animations here
-      ]
-    },
-    {
-      "file_path": "assets/forest-tile-128px.png",
-      "x": 200,
-      "y": 250,
-      "animations": [
-        # add animations here
-      ]
-    }
-  ]
+    "sprites": [
+        {
+            "file_path": "assets/forest-tile-128px.png",
+            "x": 100,
+            "y": 150,
+            "animations": [
+                # Define animations here if needed
+            ]
+        },
+        {
+            "file_path": "assets/forest-tile-128px.png",
+            "x": 200,
+            "y": 250,
+            "animations": [
+                # Define animations here if needed
+            ]
+        }
+    ]
 }
 
-with open("sprite.json", "w") as f:
-  json.dump(sprite_data, f)
-
-subprocess.run(["go", "run", "main.go", "--sprite", "sprite.json"])
+sprite_json = json.dumps(sprite_data)
+subprocess.run(["go", "run", "main.go", "--sprite", sprite_json])
