@@ -8,7 +8,12 @@ sprite_data = {
             "x": 100,
             "y": 150,
             "animations": [
-                # Define animations here if needed
+                {
+                    "type": "move",
+                    "start_x": 100,
+                    "end_x": 300,
+                    "speed": 2
+                }
             ]
         },
         {
@@ -16,7 +21,12 @@ sprite_data = {
             "x": 200,
             "y": 250,
             "animations": [
-                # Define animations here if needed
+                {
+                    "type": "move",
+                    "start_x": 200,
+                    "end_x": 400,
+                    "speed": 3
+                }
             ]
         }
     ]

@@ -24,17 +24,15 @@ type Sprite struct {
 	Y          int         `json:"y"`
 	Animations []Animation `json:"animations"`
 	image      *ebiten.Image
+	speed      float64
+	direction  int
 }
 
 type Animation struct {
-	Frames []Frame `json:"frames"`
-}
-
-type Frame struct {
-	X      int `json:"x"`
-	Y      int `json:"y"`
-	Width  int `json:"width"`
-	Height int `json:"height"`
+	Type   string  `json:"type"`
+	StartX int     `json:"start_x"`
+	EndX   int     `json:"end_x"`
+	Speed  float64 `json:"speed"`
 }
 
 type Game struct {
@@ -42,7 +40,19 @@ type Game struct {
 }
 
 func (g *Game) Update() error {
-	// Handle sprite animations here
+	for i := range g.sprites {
+		sprite := &g.sprites[i]
+		for _, animation := range sprite.Animations {
+			if animation.Type == "move" {
+				sprite.X += sprite.direction * int(animation.Speed)
+				if sprite.X >= animation.EndX {
+					sprite.direction = -1
+				} else if sprite.X <= animation.StartX {
+					sprite.direction = 1
+				}
+			}
+		}
+	}
 	return nil
 }
 
@@ -82,6 +92,7 @@ func loadSprites(jsonData string) ([]Sprite, error) {
 			return nil, err
 		}
 		spriteData.Sprites[i].image = ebiten.NewImageFromImage(img)
+		spriteData.Sprites[i].direction = 1
 	}
 
 	return spriteData.Sprites, nil
