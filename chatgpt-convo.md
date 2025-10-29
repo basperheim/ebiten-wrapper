@@ -1,6 +1,6 @@
 OK and how can I make a simpler version of that code that just renders the one image in the center of a screen in a loop? Nothing fancy or complicated. I'm just trying to learn the basics of erbiten
 ChatGPT
-Creating a simpler version of the code that just renders one image in the center of the screen using Ebiten is a great way to understand the basics. You’ll focus on initializing the game engine, loading an image, and drawing that image in the center of the window. Here’s a straightforward example to get you started:
+Creating a simpler version of the code that just renders one image in the center of the screen using Ebiten is a great way to understand the basics. You'll focus on initializing the game engine, loading an image, and drawing that image in the center of the window. Here's a straightforward example to get you started:
 
 ```go
 package main
